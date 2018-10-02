@@ -108,15 +108,11 @@ $ sudo service apache2 start
 
 Install some extra dependencies (if not present) inside the CSI folder 
 
-```zsh
-$ sudo npm install inert
-$ sudo npm install load-json-file
-
-```
 Start genericServer.js and database.js:
 ```zsh
-$ sudo node genericServer.js
-$ sudo node database.js
+$ node genericServer.js
+$ node launcher.js
+$ node database.js
 
 ```
 
