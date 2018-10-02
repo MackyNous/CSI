@@ -94,11 +94,40 @@ $ sudo systemctl start docker
 # Test if docker works
 $ sudo docker run hello-world
 ```
+## Inventory Management System
+Team VT03 has made beginning for a Inventory Management System. If you want to use this functionaliy you can follow these instructions:
+
+First, move the content of the front-end folder and a copy of nocrypto.js into /var/www/html
+
+Start apache2 service:
+```zsh
+$ sudo service apache2 start
+```
+
+Install some extra dependencies (if not present) inside the CSI folder 
+
+```zsh
+$ sudo npm install inert
+$ sudo npm install load-json-file
+
+```
+Start genericServer.js and database.js:
+```zsh
+$ sudo node genericServer.js
+$ sudo node database.js
+
+```
+
+Last step is to visit http://127.0.0.1/login and try to login with root & secretPassword1
+
+
+
 
 ## Authors
 
 * **Pum Walters** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Maricio Jongma** - *Dockerizing and setup fixes* - [CSI_Fork_MackyNous](https://github.com/MackyNous/CSI)
+* **VT03 DevOps** - *Inventory Management System module + front-end for login* - [CSI_Fork_windowsboot](https://github.com/windowsboot/CSI)
 
 See also the list of [contributors](https://github.com/MackyNous/CSI/graphs/contributors) who participated in this project.
 

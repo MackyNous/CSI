@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="NL">
+<html>
+<head>
+<title>IMS | Login</title>
+<link rel="stylesheet" type="text/css" href="panel.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+<script src="login.js"></script>
+<script src="filter.js"></script>
+<script>/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "260px";
+    document.getElementById("main").style.marginLeft = "260px";
+    document.getElementById("closeButton").style.display ="block";
+    document.getElementById("openButton").style.display ="none";
+    document.getElementById("sidebalk").style.zIndex ="0";
+
+
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "50px";
+    document.getElementById("closeButton").style.display ="none";
+    document.getElementById("openButton").style.display ="block";
+    document.getElementById("main").style.marginLeft = "50px";
+    document.getElementById("sidebalk").style.display ="block";
+    document.getElementById("sidebalk").style.zIndex ="100";
+    
+}</script>
+</head>
+
+<body>
+
+    
+<div id="mySidenav" class="sidenav">
+  <a id="closeButton" href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times" style="font-size: 28px;"></i></a>
+  <a id="item" href="#">Homepage</a>
+  <a id="item" href="#">Items</a>
+  <a id="item" href="#">Settings</a>
+  <a id="item" href="#">Contact</a>
+</div>
+
+<!-- Use any element to open the sidenav -->
+<div class="sidebalk" id="sidebalk">
+<span onclick="openNav()" style="margin: 15px; display: block"><a id="openButton" href="javascript:void(0)á" style="text-decoration: none; font-size: 30px; color: white; font-family: sans-serif"><i class="fas fa-bars"></i></a></span></div>
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+<div class="content">
+    <div class="welcome-text">
+        <h1>Inventory Management System</h1>
+        <p>Welcome back, here you have an overview of all the products in stock.</p>
+    </div>
+<br><br><hr>
+<section class="container">
+
+	<h2>All items stock</h2>
+
+	<input type="search" class="light-table-filter" data-table="order-table" placeholder="Search (Name / Desc / ID)" /> <br><br>
+
+	<table class="order-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Product ID</th>
+				<th>Price</th>
+                <th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Electric Bike </td>
+				<td>Gazelle E-Bike G50</td>
+				<td>0123456789</td>
+				<td>99$</td>
+                <td>122</td>
+                <td><button>Edit</button></td>
+			</tr>
+			<tr>
+				<td>Laptop</td>
+				<td>MSI G64-VL230</td>
+				<td>9876543210</td>
+				<td>849$</td>
+                <td>12</td>
+                <td><button>Edit</button></td>
+			</tr>
+			<tr>
+				<td>Laptop</td>
+				<td>Lenovo P30-323</td>
+				<td>9347543210</td>
+				<td>349$</td>
+                <td>18</td>
+                <td><button>Edit</button></td>
+			</tr>
+			<tr>
+				<td>Smartphone</td>
+				<td>Oneplus 5T 128GB B</td>
+				<td>6754328901</td>
+				<td>499$</td>
+                <td>242</td>
+                <td><button>Edit</button></td>
+			</tr>
+			<tr>
+				<td>Smartphone</td>
+				<td>Oneplus 3 64GB W</td>
+				<td>6746328301</td>
+				<td>199$</td>
+                <td>207</td>
+                <td><button>Edit</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+</section>
+
+    
+    
+</div>
+</div>
+
+</body>
+</html>

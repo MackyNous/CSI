@@ -60,6 +60,11 @@ global.R = R;
 fs = require('fs');
 R.logger = fs.createWriteStream('IDSlog.txt', {'flags': 'a'});
 
+var jsn = {};
+global.jsn = jsn;
+jsn.loadJsonFile = require('load-json-file');
+const init = async () => {
+
 // 
 
 var server = new Hapi.Server({
@@ -171,7 +176,6 @@ mkObject$ = (obj) => {
 	}]);
 }());
 
-const init = async () => {
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);
 };

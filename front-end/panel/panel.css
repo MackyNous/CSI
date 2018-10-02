@@ -1,0 +1,168 @@
+body {
+    background-color: white;
+    overflow-y: hidden;
+}
+#logo{
+    top: 0;
+}
+.content{
+    width: 100%;
+}
+
+
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #04283b; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 60px;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 25px;
+    color: #f7f7f7;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+#closeButton {
+        padding: 8px 0px 8px 20px;
+        margin-right: 0px;
+
+}
+#closeButton:hover {
+    color:#db2727 ;
+    ;
+
+}
+#item:hover {
+    
+    background-color:#db2727 ;
+
+}
+.sidebalk{
+    height: 100vh;
+    width: 60px;
+    background: #04283b;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 0;
+    top: 0;
+    position: absolute;
+    display: block;
+    left: 0;
+}
+
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+    margin-left: 50px;
+    left: 0;
+}
+#closeButton{
+    transition: 0.5s;
+    display: block;
+    
+}
+
+.welcome-text h1{
+    font-family: sans-serif;
+    color: #303030;
+    padding-top: 0;
+    margin-top: 0;
+}
+.welcome-text p{
+    font-family: sans-serif;
+    color: #303030;
+    padding-left: 3px;
+}
+
+
+
+/* table */
+
+
+
+table caption {
+	padding: .5em 0;
+}
+
+table.dataTable th,
+table.dataTable td {
+  white-space: nowrap;
+}
+
+
+.container {
+  text-align: center;
+  overflow: hidden;
+  width: 800px;
+  margin: 0 auto;
+  font-family: sans-serif;
+font-size: 20px;
+        color: #303030;
+
+}
+
+.container input{
+    padding: 10px;
+    border-radius: 2px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 300px;
+    border: 1px solid;
+    
+}
+.container table {
+  width: 100%;
+}
+
+.container td, .container th {
+  padding: 10px;
+}
+
+.container td:first-child, .container th:first-child {
+  padding-left: 20px;
+}
+
+.container td:last-child, .container th:last-child {
+  padding-right: 20px;
+}
+
+.container th {
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}

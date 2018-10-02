@@ -1,0 +1,45 @@
+[{
+    "_id": {
+      "$oid": "5968dd23fc13ae04d9000001"
+    },
+    "product_name": "MSI Laptop",
+    "supplier": "MSI",
+    "quantity": 261,
+    "unit_cost": "$850.47"
+  },
+  {
+    "_id": {
+      "$oid": "5968dd23fc13ae04d9000002"
+    },
+    "product_name": "Oneplus 5T",
+    "supplier": "OnePlus",
+    "quantity": 292,
+    "unit_cost": "$508.74"
+  },
+  {
+    "_id": {
+      "$oid": "5968dd23fc13ae04d9000003"
+    },
+    "product_name": "Galaxy Watch",
+    "supplier": "Samsung",
+    "quantity": 281,
+    "unit_cost": "$220.53"
+  },
+  {
+    "_id": {
+      "$oid": "5968dd23fc13ae04d9000004"
+    },
+    "product_name": "Acer PC",
+    "supplier": "Acer",
+    "quantity": 121,
+    "unit_cost": "$423.00"
+  },
+  {
+    "_id": {
+      "$oid": "5968dd23fc13ae04d9000005"
+    },
+    "product_name": "Wasmachine",
+    "supplier": "Samsung",
+    "quantity": 61,
+    "unit_cost": "$1200,00"
+  }]
