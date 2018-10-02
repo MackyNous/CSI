@@ -126,7 +126,7 @@ Last step is to visit http://127.0.0.1/login and try to login with root & secret
 ## Authors
 
 * **Pum Walters** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Maricio Jongma** - *Dockerizing and setup fixes* - [CSI_Fork_MackyNous](https://github.com/MackyNous/CSI)
+* **Maricio Jongma** - *Maintenance and Dockerizing* - [CSI_Fork_MackyNous](https://github.com/MackyNous/CSI)
 * **VT03 DevOps** - *Inventory Management System module + front-end for login* - [CSI_Fork_windowsboot](https://github.com/windowsboot/CSI)
 
 See also the list of [contributors](https://github.com/MackyNous/CSI/graphs/contributors) who participated in this project.
