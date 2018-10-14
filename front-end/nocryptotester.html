@@ -8,7 +8,7 @@
 
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-<script src="./nocrypto.js"></script>
+<script src="./back-end/nocrypto.js"></script>
 <script>
 
 var publicSecret;
@@ -17,6 +17,7 @@ var halfSecret;
 var sharedSecret;
 var dataWrong = {username:"root", password:"wrong"};
 var data = {username:"root", password:"secretPassword1"};
+var passhash = '/P:2[YeFs|DORA#te-.-p#!lVLU{4#)3o6ol|kF9^N|LowlXELGAlLw2hH3oTisV';
 
 function init(){
    document.getElementById("public").value = "";
@@ -66,6 +67,24 @@ function generateEncrypted(){
 
 }
 
+function encryptPassword(){
+
+   //alert(document.getElementById("half2").value);
+   var password = document.getElementById("password").value;
+   passwordhash = nocrypto.chash(password, passhash);
+   document.getElementById("passresult").value = passwordhash;
+
+}
+
+function decryptPassword(){
+
+   //alert(document.getElementById("half2").value);
+   var password = document.getElementById("password").value;
+   passwordhash = nocrypto.decrypt(password, passhash);
+   document.getElementById("passresult").value = passwordhash;
+
+}
+
 
 
 </script>
@@ -96,7 +115,17 @@ Generate shared secret:
 Encrypted secret:
 <input type="button" value="Generate" onclick="generateEncrypted();" />
 <input type="text" id="encrypted" size=100 />
+<br>
+<hr></hr>
+Enter password:
+<input type="text" id="password" size=100 />
+<br>
+Password hash:
+<input type="button" value="Generate" onclick="encryptPassword();" />
 
+<input type="button" value="Decrypt" onclick="decryptPassword();" />
+<input type="text" id="passresult" size=100 />
+<br>
 
 
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ACE in Action</title>
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+
+</head>
+<body>
+
+<div id="editor"></div>
+
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">\x3C/script>')</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	var endpoint="http://localhost:22222"
+	function post(data) {
+		$.ajax({
+			url: endpoint,
+			type: "POST",
+			crossDomain: true,
+			data: data,
+			dataType: "json",
+			success: function (response) {
+			},
+			error: function (xhr, status) {
+				alert("error");
+			}
+		});
+	}
+	var editor = ace.edit("editor");
+	editor.setTheme("ace/theme/monokai");
+	editor.session.setUseWrapMode(true);
+	editor.session.setWrapLimitRange(70,80);
+	editor.setShowPrintMargin(false);
+	editor.renderer.setShowGutter(false);
+
+	var line=0;
+	
+	var dirty = false;
+	var ddelta;
+	editor.session.on('change', function(delta) {
+		if (line !== delta.start.row || line !== delta.end.row) {
+			var txt=editor.env.document.getLine(line)
+			console.log({lino:line,txt:txt})
+			post({type:'change',lino:line,txt:txt});
+			line=delta.end.row
+		}
+	});
+</script>
+</body>
+</html>
