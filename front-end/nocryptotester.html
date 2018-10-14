@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>nocryptotester</title>
+<style type="text/css" media="screen">
+
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+<script src="./nocrypto.js"></script>
+<script>
+
+var publicSecret;
+var privateSecret;
+var halfSecret;
+var sharedSecret;
+var dataWrong = {username:"root", password:"wrong"};
+var data = {username:"root", password:"secretPassword1"};
+
+function init(){
+   document.getElementById("public").value = "";
+   document.getElementById("private").value = "";
+   document.getElementById("half").value = "";
+   document.getElementById("half2").value = "";
+   document.getElementById("shared").value = "";
+   document.getElementById("encrypted").value = "";
+}
+
+
+function generatePublic(){
+
+   publicSecret = nocrypto.secret();
+   document.getElementById("public").value = publicSecret;
+
+}
+
+function generatePrivate(){
+
+   privateSecret = nocrypto.secret();
+   document.getElementById("private").value = privateSecret;
+}
+
+function generateHalf(){
+
+   halfSecret = nocrypto.chash(publicSecret, privateSecret);
+   document.getElementById("half").value = halfSecret;
+
+}
+
+function generateShared(){
+
+
+   //alert(document.getElementById("half2").value);
+   var half2 = document.getElementById("half2").value;
+   sharedSecret = nocrypto.chash(half2, privateSecret);
+   document.getElementById("shared").value = sharedSecret;
+
+}
+
+function generateEncrypted(){
+
+//   alert(JSON.stringify(data));
+   var enc = nocrypto.encrypt(JSON.stringify(data), sharedSecret);
+   document.getElementById("encrypted").value = enc;
+
+}
+
+
+
+</script>
+
+</head>
+<body onload="init();">
+
+
+Generate public secret:
+<input type="button" value="Generate" onclick="generatePublic();" />
+<input type="text" id="public" size=100 />
+<br> 
+Generate private secret:
+<input type="button" value="Generate" onclick="generatePrivate();" />
+<input type="text" id="private" size=100 />
+<br> 
+Generate half secret:
+<input type="button" value="Generate" onclick="generateHalf();" />
+<input type="text" id="half" size=100 />
+<br>
+Enter other half:
+<input type="text" id="half2" size=100 />
+<br>
+Generate shared secret:
+<input type="button" value="Generate" onclick="generateShared();" />
+<input type="text" id="shared" size=100 />
+<br>
+Encrypted secret:
+<input type="button" value="Generate" onclick="generateEncrypted();" />
+<input type="text" id="encrypted" size=100 />
+
+
+
+
+
+
+
+
+</body>
+</html>
