@@ -4,12 +4,28 @@
 <script type="text/javascript" src="./nocrypto.js"></script>
 <script type="text/javascript">
 
-    // This script is based on the login functions in CSI's jsoneditor.
+	/* When using this webpage, please mind that the configuration
+	has been written for it to be on the same host as the CSI
+	application itself. If you are using the CSI application
+	distributed over different IP-addresses the following needs
+	to be reconfigured:
+	
+	Reconfigure the serverIp from location.host to the ip-
+	address of the seerver running the authentication service.
+	
+	Optional: If the authorisation service runs on another
+	port, please edit this as well. */
 
-    // De server voor productie
-    var loginSrvr = "http://" + location.host + ":10001"
-    // De server voor develop
-    //var loginSrvr="http://localhost:10001"
+    // This script is based on the login functions within CSI's jsoneditor.
+
+    // Port number of the authorisation server.
+	var autiePort = "10001"
+	
+	// IP-address of the authorisation server.
+	var serverIp = location.host;
+	
+	var loginSrvr = "http://" + serverIp + ":" + autiePort;
+
     var sessionID = nocrypto.mkGuid();
     var privateSecret = nocrypto.secret();
     var publicSecret = nocrypto.secret();
