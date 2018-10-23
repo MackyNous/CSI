@@ -51,7 +51,6 @@ install npm and run the script (debian as an example):
 $ sudo apt install npm
 $ npm install 
 $ npm start
-$ sudo node server.js
 ```
 Last step is to visit `jsoneditor.html` and press `login`
 
