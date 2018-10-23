@@ -2,13 +2,10 @@ nt = require("./notesto.js");
 
 const server_gen = 'localhost:9999/create';
 
-sub_services = [YellowPages_server, ID_server, Access_server, Login_server, IDS_server];
 
 //console.log(sub_services);
 
-const YellowPages_server, ID_server, Access_server, IDS_server, Login_server;
-
-YellowPages_server = `
+const YellowPages_server = `
 	{
 		name: 'YellowPages',
 		port: 10000,
@@ -60,7 +57,7 @@ YellowPages_server = `
 		}
 	}`;
 
-ID_server = `
+const ID_server = `
 {
 	name: 'ID-Manager',
 		port: 10002,
@@ -98,7 +95,7 @@ ID_server = `
 	},
 } `;
 
-Access_server =`
+const Access_server =`
 {
 	name: 'Access-Manager',
 		port: 10003,
@@ -122,7 +119,7 @@ Access_server =`
 	},
 } `;
 
-IDS_server = `
+const IDS_server = `
 {
 	name: 'IDS',
 		port: 10009,
@@ -151,7 +148,7 @@ IDS_server = `
 	},
 } `;
 
-Login_server =`
+const Login_server =`
 {
 	name: 'Login',
 		port: 10001,
@@ -219,12 +216,18 @@ Login_server =`
 	},
 } `;
 
-$ => {
 
+sub_services = [YellowPages_server, ID_server, Access_server, Login_server, IDS_server];
+
+//$ => {
+(function (nt) {
+console.log(sub_services)
 	console.dir(sub_services);
 
 	for (server in sub_services) {
-		nt.xPOSTjson(`${ server_gen } `, `${ server } `)
-			.then(nt.expect(/^SubServer.*$/, 'Start a Subserver'))
+console.log(server);
+		nt.xPOSTjson("localhost:9999/create", server  )
+			.then(nt.expect(/^SubServer.*$/, 'Start a Subserver'));
 	}
-};
+}(nt))
+//};
