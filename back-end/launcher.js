@@ -40,13 +40,13 @@ AccessManager: a service which checks access rights
 
 */
 
-var Hapi = require('hapi'),
-	nt = require("./notesto.js");
-	var fs = require('fs');
-	var logger = fs.createWriteStream('log.txt', {'flags': 'a'});
-					
-(function(nt){
-        
+import Hapi from 'hapi';
+import nt from "./notesto.js";
+import { createWriteStream } from 'fs';
+var logger = createWriteStream('log.txt', { 'flags': 'a' });
+
+(function (nt) {
+
 
 	//$.DELETE('localhost:9999/reset');
 
@@ -97,8 +97,8 @@ var Hapi = require('hapi'),
 				}
 			}
 		}`)
-	.then(nt.expect(/^SubServer.*$/,'Start a Subserver'))
-	
+		.then(nt.expect(/^SubServer.*$/, 'Start a Subserver'))
+
 	nt.xPOSTjson('localhost:9999/create',
 		`{	name: 'ID-Manager',
 			port: 10002,
@@ -131,7 +131,7 @@ var Hapi = require('hapi'),
 				}
 			},
 		}`)
-	.then(nt.expect(/^SubServer.*$/,'Start a Subserver'))
+		.then(nt.expect(/^SubServer.*$/, 'Start a Subserver'))
 
 	nt.xPOSTjson('localhost:9999/create',
 		`{	name: 'Access-Manager',
@@ -153,7 +153,7 @@ var Hapi = require('hapi'),
 				}
 			},
 		}`)
-	.then(nt.expect(/^SubServer.*$/,'Start a Subserver'))
+		.then(nt.expect(/^SubServer.*$/, 'Start a Subserver'))
 
 	nt.xPOSTjson('localhost:9999/create',
 		`{	name: 'IDS',
@@ -180,7 +180,7 @@ var Hapi = require('hapi'),
 				}
 			},
 		}`)
-	.then(nt.expect(/^SubServer.*$/,'Start a Subserver'))
+		.then(nt.expect(/^SubServer.*$/, 'Start a Subserver'))
 
 	nt.xPOSTjson('localhost:9999/create',
 		`{	name: 'Login',
@@ -246,5 +246,5 @@ var Hapi = require('hapi'),
 		}`)
 
 
-	
+
 }(nt));

@@ -1,8 +1,8 @@
 // By Robert-Jan Buddenbohmer
 
-var mysql = require('mysql');
+import { createConnection } from 'mysql';
 // Connectie met database opzetten
-var connection = mysql.createConnection({
+var connection = createConnection({
    host     : 'localhost',
    user     : 'root',
    password : '',

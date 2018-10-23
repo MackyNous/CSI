@@ -51,17 +51,17 @@ context where $ signifies that object.
 	* returns the list of all running subservers
 */
 
-var Hapi = require('hapi'),
-	nocrypto = require("./nocrypto.js"),
-	notesto = require("./notesto.js"),
-        dbservice = require("./dbservice.js");
+import { Server } from 'hapi';
+import nocrypto from "./nocrypto.js";
+import notesto from "./notesto.js";
+import dbservice from "./dbservice.js";
         
 var R = {};
 global.R = R;
 fs = require('fs');
 R.logger = fs.createWriteStream('IDSlog.txt', {'flags': 'a'});
 
-var server = new Hapi.Server({
+var server = new Server({
     port: 9999,
     host: '0.0.0.0',
     routes:{ 
@@ -109,7 +109,7 @@ mkObject$ = (obj) => {
 				servers[$.port] = $;
 				if (!$.hasOwnProperty('init')) $.init = (()=>{});
 				$.init()
-				$.server = new Hapi.Server({
+				$.server = new Server({
 					port: $.port,
 					host: '0.0.0.0',
 					routes:{ 
