@@ -1,6 +1,6 @@
-var Hapi = require('hapi'),
-	notesto = require("./notesto.js"),
-	nocrypto = require("./nocrypto.js");
+import Hapi from 'hapi';
+import notesto from "./notesto.js";
+import nocrypto from "./nocrypto.js";
 
 (function($){
 	console.log('Test nocrypto');

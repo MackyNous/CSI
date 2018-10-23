@@ -1,12 +1,12 @@
-const Path = require('path');
-const Hapi = require('hapi');
-const Inert = require('inert');
+import { join } from 'path';
+import { Server } from 'hapi';
+import Inert from 'inert';
 
-const server = new Hapi.Server({
+const server = new Server({
     port: 80,
     routes: {
         files: {
-            relativeTo: Path.join(__dirname, 'front-end')
+            relativeTo: join(__dirname, 'front-end')
         }
     }
 });
@@ -30,7 +30,7 @@ const provision = async () => {
     await server.start();
 
     console.log('Server running at:', server.info.uri);
-	console.log(Path.join(__dirname, 'front-end'));
+	console.log(join(__dirname, 'front-end'));
 };
 
 provision();
