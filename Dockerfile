@@ -20,4 +20,5 @@ EXPOSE 10003
 EXPOSE 10004
 
 CMD [ "npm", "start" ]
+CMD [ "node", "server.js"]
 

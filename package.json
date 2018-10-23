@@ -5,8 +5,8 @@
   "author": "Maricio Jongma <maricio.jongma@hva.nl>",
   "main": "genericServer.js",
   "scripts": {
-    "start": "node genericServer.js",
-    "poststart": "node launcher.js && node database.js"
+    "start": "node back-end/genericServer.js",
+    "poststart": "sleep 5 && node back-end/launcher.js"
   },
   "dependencies": {
     "hapi": "^17.5.4",
