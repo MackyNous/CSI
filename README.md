@@ -35,7 +35,9 @@ Recent node.js, see [nodejs.org](https://nodejs.org/en/)
 e.g. download Win msi, Mac pkg or tarball
 
 #### modules
-[![NPM](https://nodei.co/npm/hapi.png?compact=true)](https://nodei.co/npm/hapi/) [![NPM](https://nodei.co/npm/request-promise.png?compact=true)](https://nodei.co/npm/request-promise/) [![NPM](https://nodei.co/npm/request.png?compact=true)](https://nodei.co/npm/request/)
+[![NPM](https://nodei.co/npm/hapi.png?compact=true)](https://nodei.co/npm/hapi/) [![NPM](https://nodei.co/npm/request-promise.png?compact=true)](https://nodei.co/npm/request-promise/) [![NPM](https://nodei.co/npm/request.png?compact=true)](https://nodei.co/npm/request/) 
+
+[![NPM](https://nodei.co/npm/inert.png?compact=true)](https://nodei.co/npm/inert/) [![NPM](https://nodei.co/npm/load-json-file.png?compact=true)](https://nodei.co/npm/load-json-file/)
 
 
 ### Installing
@@ -106,15 +108,11 @@ $ sudo service apache2 start
 
 Install some extra dependencies (if not present) inside the CSI folder 
 
-```zsh
-$ sudo npm install inert
-$ sudo npm install load-json-file
-
-```
 Start genericServer.js and database.js:
 ```zsh
-$ sudo node genericServer.js
-$ sudo node database.js
+$ node genericServer.js
+$ node launcher.js
+$ node database.js
 
 ```
 

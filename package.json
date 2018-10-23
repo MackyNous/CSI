@@ -6,7 +6,7 @@
   "main": "genericServer.js",
   "scripts": {
     "start": "node back-end/genericServer.js",
-    "poststart": "sleep 5 && node back-end/launcher.js && sudo node server.js"
+    "poststart": "sleep 5 && node back-end/launcher.js"
   },
   "dependencies": {
     "hapi": "^17.5.4",
