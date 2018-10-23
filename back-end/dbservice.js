@@ -1,5 +1,5 @@
 
-import { createConnection } from 'mysql';
+var mysql = require('mysql');
 // Connectie met database opzetten
 let connection = createConnection({
    host     : 'localhost',

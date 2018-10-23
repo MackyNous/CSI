@@ -1,4 +1,4 @@
-import rp from 'request-promise';//,
+var rp = require('request-promise');//,
 	//nocrypto = require("./nocrypto.js");
 
 

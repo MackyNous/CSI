@@ -40,9 +40,9 @@ AccessManager: a service which checks access rights
 
 */
 
-import Hapi from 'hapi';
-import nt from "./notesto.js";
-import { createWriteStream } from 'fs';
+var Hapi = require('hapi'),
+nt = require("./notesto.js");
+var fs = require('fs');
 var logger = createWriteStream('log.txt', { 'flags': 'a' });
 
 (function (nt) {

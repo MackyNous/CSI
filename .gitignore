@@ -1,6 +1,6 @@
 # Trash
 archive
-.idea/
+.idea/*
 
 # Logs
 logs
