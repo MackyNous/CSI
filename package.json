@@ -5,7 +5,7 @@
   "author": "Maricio Jongma <maricio.jongma@hva.nl>",
   "main": "genericServer.js",
   "scripts": {
-    "start": "node back-end/genericServer.js",
+    "start": "node back-end/genericServer.js &",
     "poststart": "sleep 5 && node back-end/launcher.js && sudo node server.js"
   },
   "dependencies": {

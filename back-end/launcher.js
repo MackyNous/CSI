@@ -43,7 +43,7 @@ AccessManager: a service which checks access rights
 var Hapi = require('hapi'),
 nt = require("./notesto.js");
 var fs = require('fs');
-var logger = createWriteStream('log.txt', { 'flags': 'a' });
+var logger = fs.createWriteStream('log.txt', { 'flags': 'a' });
 
 (function (nt) {
 

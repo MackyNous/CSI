@@ -1,7 +1,7 @@
 
 var mysql = require('mysql');
 // Connectie met database opzetten
-let connection = createConnection({
+let connection = mysql.createConnection({
    host     : 'localhost',
    user     : 'root',
    password : '',
