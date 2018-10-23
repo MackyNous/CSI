@@ -1,3 +1,5 @@
+nt = require("./notesto.js");
+
 const IDS_server = `
 {	name: 'IDS',
 			port: 10004,
