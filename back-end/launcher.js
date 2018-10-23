@@ -40,6 +40,9 @@ AccessManager: a service which checks access rights
 
 */
 
+//TODO put servers in vars and call as done in test.js 
+//Maybe put in array
+
 var Hapi = require('hapi'),
 nt = require("./notesto.js");
 var fs = require('fs');
