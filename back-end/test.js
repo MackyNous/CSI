@@ -2,7 +2,7 @@ nt = require("./notesto.js");
 
 const IDS_server = `
 {	name: 'IDS',
-			port: 10004,
+			port: 10009,
 			version: 1,
 			init: () => { $.trace(1,'IDS$init:1')
 				$.keys=$.ppks();
