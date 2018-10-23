@@ -59,7 +59,7 @@ import dbservice from "./dbservice.js";
 var R = {};
 global.R = R;
 fs = require('fs');
-R.logger = fs.createWriteStream('IDSlog.txt', {'flags': 'a'});
+R.logger = fs.createWriteStream('IDSlog.log', {'flags': 'a'});
 
 var server = new Server({
     port: 9999,
@@ -75,9 +75,9 @@ var servers = {};
 
 mkObject$ = (obj) => {
 	var $ = Object.assign({},dbservice,notesto,nocrypto);
-	Object.assign($,Function('$','"use strict";return (' + obj + ')')($))
+	Object.assign($,Function('$','"use strict";return (' + obj + ')')($));
 	return $
-}
+};
 
 (function(){
 	server.route([
@@ -92,7 +92,7 @@ mkObject$ = (obj) => {
 			path: '/reset',
 			handler: function(request, reply) {
 				Object.keys(servers).forEach( key => {
-					servers[key].server.stop()
+					servers[key].server.stop();
 					delete servers[key]
 				});
 				return '"Generic Server Reset"';
@@ -102,13 +102,13 @@ mkObject$ = (obj) => {
 			path: '/create',
 			handler: function(request, reply) {
 				var $ = mkObject$(request.payload);
-												 $.trace(2,'Generic$Generic:1')
+												 $.trace(2,'Generic$Generic:1');
 				if (servers.hasOwnProperty($.port)) {
 					return '**ERROR** port already in use ('+$.port+')'
 				}
 				servers[$.port] = $;
 				if (!$.hasOwnProperty('init')) $.init = (()=>{});
-				$.init()
+				$.init();
 				$.server = new Server({
 					port: $.port,
 					host: '0.0.0.0',
@@ -124,16 +124,16 @@ mkObject$ = (obj) => {
 							var o = {
 								method: i,
 								path: '/'+k,
-								handler: function(request, reply) { $.trace(2,'Generic$Generic:2')
+								handler: function(request, reply) { $.trace(2,'Generic$Generic:2');
 									$.BODY = request.payload; 
 									$.PARAM = request.query; 
 									$.PATH = request.params;
 									$.REQUEST = request;
 									return v($) || 'null';
 								}
-							}
-							if (i==='POSTS') { $.trace(2,'Generic$Generic:2')
-								o.method = 'POST'
+							};
+							if (i==='POSTS') { $.trace(2,'Generic$Generic:2');
+								o.method = 'POST';
 								o.config = {
 									payload: {
 										parse: false
@@ -147,13 +147,13 @@ mkObject$ = (obj) => {
 				$.server.route([{
 					method: 'DELETE',
 					path: '/',
-					handler: function(request, reply) { $.trace(2,'Generic$Generic:3')
-						delete servers[$.port]
-						$.server.stop()
+					handler: function(request, reply) { $.trace(2,'Generic$Generic:3');
+						delete servers[$.port];
+						$.server.stop();
 						delete $.server;
 						return '"destroyed"';
 					}
-				}])
+				}]);
 				const init = async () => {
 					await $.server.start();
 					console.log(`SubServer running at: ${$.server.info.uri}`);

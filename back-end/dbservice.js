@@ -1,8 +1,7 @@
-// By Robert-Jan Buddenbohmer
 
 import { createConnection } from 'mysql';
 // Connectie met database opzetten
-var connection = createConnection({
+let connection = createConnection({
    host     : 'localhost',
    user     : 'root',
    password : '',
@@ -18,11 +17,11 @@ connection.connect(function(err){
  });
 
 (function() {
-	var dbservice = (() => {
-		var areCredsValid = (usr,pass) => { 
+	const dbservice = (() => {
+		let areCredsValid = (usr,pass) => {
 			//check if the combination of username and password exists in the DB
 			// SQL injectie is niet mogelijk aangezien het framework dit afvangt. TODO: Best pactice voor creeeren sql string toepassen.
-		       var sql = "SELECT COUNT(*) as found FROM user where name='"+ usr + "' AND password='"+pass+"'";
+		       const sql = "SELECT COUNT(*) as found FROM user where name='"+ usr + "' AND password='"+pass+"'";
                        return new Promise( ( resolve, reject ) => {
             			connection.query( sql, ( err, rows ) => {
                 		if ( err )
@@ -31,11 +30,11 @@ connection.connect(function(err){
             			} );
      		       } );
 
-                }
+                };
 
 
 		return { areCredsValid: areCredsValid}	
-	})()
+	})();
 
 	if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 		//node

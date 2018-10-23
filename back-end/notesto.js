@@ -23,14 +23,14 @@ var traceval = 2;
 		xPOSTtxt: (url,bdy) => {
 			return rp({ method:'POST',
 				uri:'http://'+url,
-				body:bdy,	
+				body:bdy,
 				headers: {
 					'content-type': 'text/plain'
-				}	
+				}
 			}).catch(x=>{throw(Error('notesto.POST('+url+bdy+') resulted in '+x))})
 			.then(x => { if (/\*\*ERROR\*\*/.test(x)) {
 							throw(Error('notesto.POST('+url+bdy+') resulted in '+x)); } return x; })},
-		xGET: (url) => 
+		xGET: (url) =>
 			rp({ method:'GET',
 				uri:'http://'+url,	
 			}).catch(x=>{throw(Error('notesto.GET('+url+') resulted in '+x))})
@@ -56,7 +56,7 @@ var traceval = 2;
 			if (n<traceval) console.log('***',msg)
 		}
 			
-	}))()	
+	}))();
 
 	if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 		module.exports = notesto;
