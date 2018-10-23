@@ -42,11 +42,16 @@ e.g. download Win msi, Mac pkg or tarball
 
 ### Installing
 
+```
+In DEV: MySQL setup section. 
+```
+
 install npm and run the script (debian as an example): 
 ```zsh
 $ sudo apt install npm
 $ npm install 
 $ npm start
+$ sudo node server.js
 ```
 Last step is to visit `jsoneditor.html` and press `login`
 
