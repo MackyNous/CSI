@@ -120,7 +120,7 @@ const Access_server =`
 const IDS_server = `
 {
 	name: 'IDS',
-		port: 10009,
+		port: 10005,
 			version: 1,
 				init: () => {
 					$.trace(1, 'IDS$init:1')
@@ -219,11 +219,11 @@ sub_services = [YellowPages_server, ID_server, Access_server, Login_server, IDS_
 
 //$ => {
 (function (nt) {
-console.log(sub_services);
-	console.dir(sub_services);
+	//console.log(sub_services);
+	//console.dir(sub_services);
 
 	for (let i = 0 ; i< sub_services.length; i++) {
-		console.log(sub_services[i]);
+		//console.log(sub_services[i]);
 		nt.xPOSTjson("localhost:9999/create", sub_services[i]  )
 			.then(nt.expect(/^SubServer.*$/, 'Start a Subserver'));
 	}
