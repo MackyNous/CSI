@@ -1,7 +1,5 @@
 nt = require("./notesto.js");
 
-const server_gen = 'localhost:9999/create';
-
 
 //console.log(sub_services);
 
@@ -221,13 +219,13 @@ sub_services = [YellowPages_server, ID_server, Access_server, Login_server, IDS_
 
 //$ => {
 (function (nt) {
-console.log(sub_services)
+console.log(sub_services);
 	console.dir(sub_services);
 
-	for (server in sub_services) {
-console.log(server);
-		nt.xPOSTjson("localhost:9999/create", server  )
+	for (let i = 0 ; i< sub_services.length; i++) {
+		console.log(sub_services[i]);
+		nt.xPOSTjson("localhost:9999/create", sub_services[i]  )
 			.then(nt.expect(/^SubServer.*$/, 'Start a Subserver'));
 	}
-}(nt))
+}(nt));
 //};
