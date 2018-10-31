@@ -1,0 +1,47 @@
+version: "3"
+services:
+  mysql:
+    image: mysql
+    container_name: test-mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: "CSI"
+    restart: always
+    volumes:
+      - /storage/docker/mysql-datadir:/var/lib/mysql
+  web:
+    depends_on: 
+      - mysql
+    # replace username/repo:tag with your name and image details
+    image: csi_test01
+    container_name: csi_test02
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+      - "9999:9999"
+    networks:
+      - webnet
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+networks:
+  webnet:
+      driver: bridge
+

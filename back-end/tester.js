@@ -1,6 +1,6 @@
 var Hapi = require('hapi'),
-	notesto = require("./notesto.js"),
-	nocrypto = require("./nocrypto.js");
+notesto = require("./notesto.js"),
+nocrypto = require("./nocrypto.js");
 
 (function($){
 	console.log('Test nocrypto');

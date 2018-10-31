@@ -1,0 +1,178 @@
+<html>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+<script type="text/javascript" src="./nocrypto.js"></script>
+<script type="text/javascript">
+
+	/* When using this webpage, please mind that the configuration
+	has been written for it to be on the same host as the CSI
+	application itself. If you are using the CSI application
+	distributed over different IP-addresses the following needs
+	to be reconfigured:
+	
+	Reconfigure the serverIp from location.host to the ip-
+	address of the seerver running the authentication service.
+	
+	Optional: If the authorisation service runs on another
+	port, please edit this as well. */
+
+    // This script is based on the login functions within CSI's jsoneditor.
+
+    // Port number of the authorisation server.
+	var autiePort = "10001"
+	
+	// IP-address of the authorisation server.
+	var serverIp = location.host;
+	
+	var loginSrvr = "http://" + serverIp + ":" + autiePort;
+
+    var sessionID = nocrypto.mkGuid();
+    var privateSecret = nocrypto.secret();
+    var publicSecret = nocrypto.secret();
+    var sharedSecret;
+
+    $(function () {
+
+        $('#login').click(function () {
+
+            var uname = $('#username').val();
+            xPOSTS(loginSrvr, 'login/' + sessionID, {
+                username: uname,
+                password: $('#password').val()
+            }, sharedSecret)
+            return;
+        });
+
+        $('#keep').click(function () {
+
+            alert("Not implemented yet");
+            return;
+        });
+
+        $('#forgot').click(function () {
+
+            alert("Not implemented yet");
+            return;
+        });
+
+
+    });
+
+
+    function xPOST(srv, verb, data) {
+        return $.ajax(
+            {
+                url: srv + '/' + verb,
+                type: "POST",
+                headers: {
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                },
+                crossDomain: true,
+                data: data,
+                dataType: "json",
+                success: function (response) {
+                    sharedSecret = nocrypto.chash(response.halfSecret, privateSecret);
+                }
+            }).fail(function (xhr) {
+                alert("error");
+            })
+    }
+
+
+    function xPOSTS(srv, verb, data, secret) {
+
+        return $.ajax(
+            {
+                url: srv + '/' + verb,
+                type: "POST",
+                crossDomain: true,
+                data: nocrypto.encrypt(JSON.stringify(data), secret),
+                dataType: "text",
+                success: function (response) {
+                    login(response);
+                }
+            }).fail(function (xhr) {
+                alert("error");
+            })
+    }
+
+    function login(response) {
+
+        var data = JSON.parse(response);
+        if (data.hasOwnProperty("sessionToken")) {
+            // Login geslaagd, vanaf hier beschikken we over een sessionToken
+            //alert(data.sessionToken);
+            var message = "Yes, you did it! You have obtaind your session token:<br><br>" + data.sessionToken;
+            document.getElementById("errorMsg").innerHTML = message;
+            //window.location.assign("./front-end/panel")
+        } else {
+            document.getElementById("errorMsg").innerHTML = "Login failed";
+        }
+
+
+    }
+
+    xPOST(loginSrvr, 'keyExchange', {
+        sessionID: sessionID,
+        publicSecret: publicSecret,
+        halfSecret: nocrypto.chash(publicSecret, privateSecret)
+    })
+
+
+
+</script>
+
+<head>
+    <!--Titel maken, CSS linken en 'login.js' linken aan de pagina-->
+    <title>IMS | Login</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <!--Logo in de hoek-->
+    <img src="logo.png" style="width: 200px; position: absolute;" id="logo" />
+    <div class="content">
+
+        <!--Alles hier is het login vierkantje-->
+        <div class="loginbox" onload="test()">
+            <div class="balk">
+                <h1>IMS | Login</h1>
+            </div>
+            <div class="loginbox-inhoud">
+
+                <p>Welcome on the Inventory Management System</p>
+
+                <!--<form method="post" name="myform">
+
+                    <input type="text" name="username" id="name" placeholder="Username" required /><br>
+                    <input type="password" name="password" id="password" placeholder="Password" required /><br>
+                    <input type="button" value="Login" id="connect" />
+                    <!--Wanneer er op de button wordt gedrukt activeert het validate() dit bevind zich in de 'login.js' file.->
+
+
+                </form>-->
+
+                <form method="post" name="myform">
+                   
+                        <input type="text" name="username" id="username" placeholder="Username" required/><br/>
+                         
+                        <!--<p><a id="forgot" href="#">Forgot your password?</a>-->
+                         
+                        <input type="password" name="password" id="password" placeholder="Password" required />
+                        <span id="errorMsg" style="color:red; padding-left:20px;"></span>         
+                 
+                        <div id="lower">
+                         
+                            <input type="button" value="Login" id="login">
+                                
+                        </div><!--/ lower-->
+                     </form>
+
+                <p>(You can login with root & secretPassword1)</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
