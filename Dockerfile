@@ -3,7 +3,7 @@ FROM node:8
 # create app dir
 WORKDIR /usr/src/CSI
 
-RUN apt-get update && apt-get install -y apache2 && apt-get clean && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y apache2 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # install app dependencies from package*.json
 
