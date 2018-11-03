@@ -45,6 +45,11 @@ const provision = async () => {
 
     console.log('Server running at:', server.info.uri);
 	console.log(Path.join(__dirname, 'front-end'));
+
+    //TODO: add ufw/iptables section 
+	//Read login.log file
+	//if user attempts > 5 : block for 10 min 
+	//add new log to info.log
 };
 
 provision();
