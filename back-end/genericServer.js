@@ -57,6 +57,7 @@ notesto = require("./notesto.js"),
 dbservice = require("./dbservice.js");
 logger = require('./logger.js');
 
+//TODO: Use R object in server.js ? 
 var R = {};
 global.R = R;
 fs = require('fs');
