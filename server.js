@@ -1,4 +1,4 @@
-const logger = require('./logger.js');
+const winston = require('winston');
 const Path = require('path');
 const Hapi = require('hapi');
 const Inert = require('inert');
@@ -11,7 +11,7 @@ const server = new Hapi.Server({
         }
     }
 });
-/*
+
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(),
@@ -21,7 +21,7 @@ const logger = winston.createLogger({
         new winston.transports.File({ filename: 'Log/info.log', level: 'info'})
     ]
 });
-*/
+
 const provision = async () => {
 
     await server.register(Inert);
@@ -29,11 +29,14 @@ const provision = async () => {
     server.route({
         method: 'GET',
         path: '/{param*}',
-        handler: function(request, response) {
-            logger.debug('Debug statement');
-            logger.info('Info statement');
+        handler: {
+            directory: {
+                path: '.',
+                redirectToSlash: true,
+                index: true
+            }
         }
-    });
+      });
 
     await server.start();
 

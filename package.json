@@ -9,12 +9,13 @@
     "poststart": "sleep 5 && node back-end/launcher.js && sudo node server.js"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "hapi": "^17.5.4",
+    "inert": "^5.1.0",
+    "load-json-file": "^5.1.0",
+    "mysql": "^2.16.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "inert": "^5.1.0",
-    "mysql": "^2.16.0",
-    "fs": "^0.0.1-security",
-    "load-json-file": "^5.1.0"
+    "winston": "^3.1.0"
   }
 }
