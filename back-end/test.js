@@ -1,6 +1,6 @@
 nt = require("./notesto.js");
 
-const IDS_server = `
+const IDS_server = 
 {	name: 'IDS',
 			port: 10009,
 			version: 1,
@@ -24,7 +24,7 @@ const IDS_server = `
 					return 'OK';
 				}
 			},
-		}`
+		}
 
 nt.xPOSTjson('localhost:9999/create',
 		`${IDS_server}`)
