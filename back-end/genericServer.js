@@ -55,7 +55,8 @@ var Hapi = require('hapi');
 nocrypto = require("./nocrypto.js"),
 notesto = require("./notesto.js"),
 dbservice = require("./dbservice.js");
-        
+logger = require('./logger.js');
+
 var R = {};
 global.R = R;
 fs = require('fs');
