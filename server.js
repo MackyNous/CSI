@@ -87,7 +87,8 @@ const provision = async () => {
         }
     });
 
-    execute('iptables -I INPUT -m set --match-set blacklist src -j DROP');
+    () => { execute('iptables -I INPUT -m set --match-set blacklist src -j DROP'), 
+function(error) { if(error) R.logger.write(error); console.log(error) } };
     execute('iptables -I FORWARD -m set --match-set blacklist src -j DROP');
 
     await server.start();
