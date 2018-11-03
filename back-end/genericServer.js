@@ -55,10 +55,9 @@ var Hapi = require('hapi');
 nocrypto = require("./nocrypto.js"),
 notesto = require("./notesto.js"),
 dbservice = require("./dbservice.js");
-logger = require('./logger.js');
 
 //TODO: Use R object in server.js ? 
-var R = {};
+let R = {};
 global.R = R;
 fs = require('fs');
 R.logger = fs.createWriteStream('IDSlog.log', {'flags': 'a'});
