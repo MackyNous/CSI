@@ -18,8 +18,14 @@ const logger = winston.createLogger({
     format: winston.format.json(),
     transports: [
         new winston.transports.Console(),
-        new winston.transports.File({ filename: 'Log/error.log', level: 'error'}),
-        new winston.transports.File({ filename: 'Log/info.log', level: 'info'})
+        new winston.transports.File({
+            filename: 'Log/error.log',
+            level: 'error'
+        }),
+        new winston.transports.File({
+            filename: 'Log/info.log',
+            level: 'info'
+        })
     ]
 });
 
@@ -37,19 +43,27 @@ const provision = async () => {
                 index: true
             }
         }
-      });
+    });
 
-    //TODO: add here (function(request, h) {}) and use req to print out req info 
 
     await server.start();
 
     console.log('Server running at:', server.info.uri);
-	console.log(Path.join(__dirname, 'front-end'));
+    console.log(Path.join(__dirname, 'front-end'));
 
     //TODO: add ufw/iptables section 
-	//Read login.log file
-	//if user attempts > 5 : block for 10 min 
-	//add new log to info.log
+    //Read login.log file
+    //if user attempts > 5 : block for 10 min 
+    //add new log to info.log
 };
 
 provision();
+
+//TODO: add here (function(request, h) {}) and use req to print out req info 
+
+server.events.on('log', (event, tags) => {
+
+    if (tags.error) {
+        console.log(`Server error: ${event.error ? event.error.message : 'unknown'}`);
+    }
+});
