@@ -12,6 +12,7 @@ const server = new Hapi.Server({
     }
 });
 
+//TODO: implement winston Logger
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(),
@@ -37,6 +38,8 @@ const provision = async () => {
             }
         }
       });
+
+    //TODO: add here (function(request, h) {}) and use req to print out req info 
 
     await server.start();
 
