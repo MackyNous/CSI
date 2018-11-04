@@ -63,55 +63,17 @@ const provision = async () => {
         }
     });
 
+    //TODO: iptables shell script started by this server every 1 minute.
 
-    //TODO: add ufw/iptables section
-    //Read login.log file
-    //if user attempts > 5 : block for 10 min
-    //add new log to info.log
-
-    //ipset create blacklist hash:ip hashsize 4096
-    //iptables -I INPUT -m set --match-set blacklist src -j DROP
-    //iptables -I FORWARD -m set --match-set blacklist src -j DROP
-    //ipset add blacklist 192.168.1.100
-
-/*
-    ipset.create({
-       sudo: true,
-       setname: 'blacklist',
-       type: 'hash:ip',
-       create_options: {
-           hashsize: 4096
-       }
-    }, function(error) {
-        if(error) {
-            R.logger.write("ipset.create: " + error);
-            console.log("ipset.create: " + error);
-        }
-    });
-
-    ipset.add({
-	sudo: true,
-	setname: 'blacklist',
-	entry: '192.168.1.14'
-    }, function(error) {
-	if(error) R.logger.write("ipset.create: " + error); console.log("ipset.create: " + error);
-    });
-
-
-    () => {
-	execute('sudo iptables -I INPUT -m set --match-set blacklist src -j DROP'),
-	function(error) {
-	    if(error) R.logger.write(error); console.log(error);
-	}
-    };
-   // execute('iptables -I FORWARD -m set --match-set blacklist src -j DROP');
-*/
     await server.start();
 
     console.log('Server running at:', server.info.uri);
     console.log(Path.join(__dirname, 'front-end'));
 
+
 };
+
+//const interval = setInterval(function() {openShellScript;}, 60000)
 
 provision();
 
