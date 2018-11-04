@@ -74,7 +74,9 @@ const provision = async () => {
     //iptables -I FORWARD -m set --match-set blacklist src -j DROP
     //ipset add blacklist 192.168.1.100
 
+/*
     ipset.create({
+       sudo: true,
        setname: 'blacklist',
        type: 'hash:ip',
        create_options: {
@@ -88,6 +90,7 @@ const provision = async () => {
     });
 
     ipset.add({
+	sudo: true,
 	setname: 'blacklist',
 	entry: '192.168.1.14'
     }, function(error) {
@@ -96,13 +99,13 @@ const provision = async () => {
 
 
     () => {
-	execute('iptables -I INPUT -m set --match-set blacklist src -j DROP'),
+	execute('sudo iptables -I INPUT -m set --match-set blacklist src -j DROP'),
 	function(error) {
 	    if(error) R.logger.write(error); console.log(error);
 	}
     };
    // execute('iptables -I FORWARD -m set --match-set blacklist src -j DROP');
-
+*/
     await server.start();
 
     console.log('Server running at:', server.info.uri);
